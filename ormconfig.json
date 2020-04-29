@@ -2,7 +2,7 @@
 "type": "postgres",
 "host": "localhost",
 "port": 5432,
-"username":"mso10br",
+"username":"postgres",
 "password": 481013,
 "database": "msoGoBarber"
 }
