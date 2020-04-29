@@ -1,0 +1,8 @@
+{
+"type": "postgres",
+"host": "localhost",
+"port": 5432,
+"username":"mso10br",
+"password": 481013,
+"database": "msoGoBarber"
+}
