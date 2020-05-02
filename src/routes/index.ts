@@ -1,12 +1,11 @@
 import { Router } from 'express';
 
-import AgendamentosRouts from './Agendamento.route';
+import AgendamentosRouts from './AgendamentoRouts';
+import UsuariosRouts from './UsuariosRouts';
 
 const routes = Router();
 
 routes.use('/agendamentos', AgendamentosRouts)
-
-
-routes.get('/teste', (request, response) => response.json({message: 'Hello Tes - 3333'}));
+routes.use('/usuarios', UsuariosRouts)
 
 export default routes;
