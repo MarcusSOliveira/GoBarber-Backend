@@ -4,9 +4,9 @@ import { EntityRepository, Repository } from 'typeorm';
 @EntityRepository(Agendamento)
 class AgendamentoRepositorio extends Repository<Agendamento> {
 
-   public async findBydate(data: Date): Promise<Agendamento | null> {
+   public async findBydate(data: Date, provider_id: string): Promise<Agendamento | null> {
       const EncontreAgendamento = await this.findOne({
-         where: {data},
+         where: {provider_id, data},
       });
 
       return EncontreAgendamento || null;

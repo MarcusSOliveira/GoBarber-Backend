@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import createUsuarioService from '../Services/CreateUsuarios';
 
+
 const UsuariosRouts = Router();
 
 UsuariosRouts.post('/', async (request, response) => {
@@ -14,6 +15,8 @@ UsuariosRouts.post('/', async (request, response) => {
          Nome, email, password
       });
 
+      delete usuario.password;
+
       return response.json(usuario);
    }  catch (err) {
       return response.status(400).json({error: err.message});
@@ -21,5 +24,14 @@ UsuariosRouts.post('/', async (request, response) => {
 
 
 });
+
+// UsuariosRouts.get('/', async (request, response) => {
+
+//    const agendamentoRepositorio = getCustomRepository(usRepositorio);
+//    const findAgendamento = await agendamentoRepositorio.find();
+
+//    return response.json(findAgendamento);
+// })
+
 
 export default UsuariosRouts;

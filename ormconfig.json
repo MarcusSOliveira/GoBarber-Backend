@@ -4,5 +4,16 @@
 "port": 5432,
 "username":"postgres",
 "password": 481013,
-"database": "msoGoBarber"
+"database": "MsoBarber",
+"entities":[
+   "./src/model/*.ts"
+],
+"migrations": [
+   "./src/database/migrations/*.ts"
+   ],
+   "cli" : {
+      "migrationsDir": "./src/database/migrations/"
+   }
+
 }
+

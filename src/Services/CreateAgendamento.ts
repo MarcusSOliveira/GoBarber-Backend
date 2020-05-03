@@ -1,20 +1,22 @@
-import Agendamento from '../model/AgendamentoModel';
 import { getCustomRepository } from 'typeorm';
-import AgendamentoRepositorio from '../repositorio/AgendamentoRepositorio';
 import { startOfHour } from 'date-fns';
+
+import Agendamento from '../model/AgendamentoModel';
+import AgendamentoRepositorio from '../repositorio/AgendamentoRepositorio';
 
 interface RequestDTO {
    data: Date;
-   provider_id: 'uuid';
+   provider_id: string;
 }
 class CreateAgendamentoService
 {
    public async execute({ data, provider_id } : RequestDTO ) : Promise<Agendamento> {
+
       const agendamentoRepositorio = getCustomRepository(AgendamentoRepositorio);
 
       const dataCorrigida = startOfHour(data);
 
-      const EncontreAgendamento = await agendamentoRepositorio.findBydate(dataCorrigida);
+      const EncontreAgendamento = await agendamentoRepositorio.findBydate(dataCorrigida, provider_id);
 
       if (EncontreAgendamento) {
          throw Error('Agendamento já cadastrado.');

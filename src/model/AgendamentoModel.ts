@@ -7,7 +7,7 @@ class Agendamento {
    id: string;
 
    @Column()
-   provider_id : 'uuid';
+   provider_id : string;
 
    @ManyToOne(()=> Usuario)
    @JoinColumn({ name: 'provider_id'})

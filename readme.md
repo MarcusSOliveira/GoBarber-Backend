@@ -17,3 +17,20 @@
 # yarn add date-fns
 # yarn add uuidv4
 # yarn add typeorm pg
+
+## Migrations Criações
+# yarn typeorm migration:create -n CreateAgendamento
+# yarn typeorm migration:create -n CreateUsuarios
+# yarn add bcryptjs
+# yarn add -D @types/bcryptjs
+
+
+## Migrations Manipulações
+# yarn typeorm migrations:run
+# yarn typeorm migrations:show
+# yarn typeorm migrations:revert
+
+# git commit -m "Atualizando"
+# git remote add origin https://github.com/MarcusSOliveira/GoBarber-Backend.git
+# git pull
+# git push -u origin master
