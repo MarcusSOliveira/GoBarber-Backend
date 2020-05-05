@@ -24,6 +24,8 @@
 # yarn add bcryptjs
 # yarn add -D @types/bcryptjs
 
+## Criando a imagem do postgres no Docker
+# docker run -p 5432:5432 --name MsoBarber -e POSTGRES_PASSWORD=123456 -d postgres
 
 ## Migrations Manipulações
 # yarn typeorm migrations:run
@@ -34,3 +36,8 @@
 # git remote add origin https://github.com/MarcusSOliveira/GoBarber-Backend.git
 # git pull
 # git push -u origin master
+
+## Instalar o JWT
+# yarn add jsonwebtoken
+# yarn add -D @types/jsonwebtoken
+

@@ -27,7 +27,7 @@ UsuariosRouts.post('/', async (request, response) => {
 
 // UsuariosRouts.get('/', async (request, response) => {
 
-//    const agendamentoRepositorio = getCustomRepository(usRepositorio);
+//    const agendamentoRepositorio = getCustomRepository(Repositorio);
 //    const findAgendamento = await agendamentoRepositorio.find();
 
 //    return response.json(findAgendamento);

@@ -1,5 +1,6 @@
 import {getRepository} from 'typeorm';
 import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 import Usuarios from '../model/UsuariosModel';
 
 interface Request{
@@ -8,7 +9,8 @@ interface Request{
 }
 
 interface Response{
-   usuario: Usuarios
+   usuario: Usuarios;
+   token: string;
 }
 
 class SessionService{
@@ -26,8 +28,14 @@ class SessionService{
       if(!ValidarPassword){
          throw new Error('Autenticação falhou!');
       }
+
+      const token = sign({  }, '*(&%&$$#%$#$%ÏOGYUFYFY', {
+         subject: usuario.id,
+         expiresIn: '20M'
+      });
       return{
-         usuario
+         usuario,
+         token,
       };
 
 
