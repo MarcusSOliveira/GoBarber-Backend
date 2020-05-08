@@ -14,6 +14,9 @@ class Usuarios {
    @Column()
    password : string;
 
+   @Column()
+   avatar : string;
+
    @CreateDateColumn()
    CriadoEm : Date;
 

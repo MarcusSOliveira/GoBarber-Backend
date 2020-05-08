@@ -4,6 +4,8 @@ import { startOfHour } from 'date-fns';
 import Agendamento from '../model/AgendamentoModel';
 import AgendamentoRepositorio from '../repositorio/AgendamentoRepositorio';
 
+import appErro from '../errors/appError';
+
 interface RequestDTO {
    data: Date;
    provider_id: string;
@@ -19,7 +21,7 @@ class CreateAgendamentoService
       const EncontreAgendamento = await agendamentoRepositorio.findBydate(dataCorrigida, provider_id);
 
       if (EncontreAgendamento) {
-         throw Error('Agendamento já cadastrado.');
+         throw new appErro('Agendamento já cadastrado.');
       };
 
       const agendamento = agendamentoRepositorio.create({ provider_id, data: dataCorrigida });

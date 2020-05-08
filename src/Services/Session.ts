@@ -2,6 +2,8 @@ import {getRepository} from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import Usuarios from '../model/UsuariosModel';
+import ConfigToken from '../config/Autenticacao';
+import appErro from '../errors/appError';
 
 interface Request{
    email: string;
@@ -20,18 +22,20 @@ class SessionService{
       const usuario = await UsuariosRepository.findOne({ where: {email}});
 
       if (!usuario) {
-         throw new Error('Autenticação falhou!');
+         throw new appErro('Autenticação falhou!', 401);
       }
 
       const ValidarPassword =  await compare(password, usuario.password);
 
       if(!ValidarPassword){
-         throw new Error('Autenticação falhou!');
+         throw new appErro('Autenticação falhou!', 401);
       }
 
-      const token = sign({  }, '*(&%&$$#%$#$%ÏOGYUFYFY', {
+      const { secret, expiresIn } = ConfigToken.jwt;
+
+      const token = sign({}, secret, {
          subject: usuario.id,
-         expiresIn: '20M'
+         expiresIn: expiresIn
       });
       return{
          usuario,

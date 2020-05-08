@@ -3,37 +3,30 @@ import { parseISO } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
 import AgendamentoRepositorio from '../repositorio/AgendamentoRepositorio';
 import CreateAgendamentoService from '../Services/CreateAgendamento';
+import autentica from '../middlewares/Autenticacao';
 
 const AgendamentosRouts = Router();
 
+AgendamentosRouts.use(autentica);
 
 AgendamentosRouts.get('/', async (request, response) => {
-
    const agendamentoRepositorio = getCustomRepository(AgendamentoRepositorio);
    const findAgendamento = await agendamentoRepositorio.find();
 
    return response.json(findAgendamento);
 })
 
-AgendamentosRouts.post('/', async (request, response) => {
-   try
-   {
-      const { data, provider_id } = request.body;
+AgendamentosRouts.post ('/', async (request, response)  => {
 
-      //const provider_id = "9a008370-cb7c-400c-8f22-a161adda7399";
+   const { data, provider_id } = request.body;
 
-      const SetarData = parseISO(data);
+   const SetarData = parseISO(data);
 
-      const CreateAgendamento = new CreateAgendamentoService();
+   const CreateAgendamento = new CreateAgendamentoService();
 
-      const agendamento = await CreateAgendamento.execute({ data: SetarData, provider_id });
+   const agendamento = await CreateAgendamento.execute({ data: SetarData, provider_id });
 
-      return response.json(agendamento);
-
-   }  catch (err) {
-      return response.status(400).json({error: err.message});
-   }
-
+   return response.json(agendamento);
 
 });
 

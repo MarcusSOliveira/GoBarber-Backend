@@ -21,6 +21,9 @@
 ## Migrations Criações
 # yarn typeorm migration:create -n CreateAgendamento
 # yarn typeorm migration:create -n CreateUsuarios
+# yarn typeorm migration:create -n AddAvatarInUsuarios
+
+## Criação de Scripts
 # yarn add bcryptjs
 # yarn add -D @types/bcryptjs
 
@@ -40,4 +43,10 @@
 ## Instalar o JWT
 # yarn add jsonwebtoken
 # yarn add -D @types/jsonwebtoken
+
+## Instalando o Multer
+# yarn add multer
+# yarn add -D @types/multer
+
+# yarn add express-async-errors
 
